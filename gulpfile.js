@@ -20,7 +20,7 @@ const markupTask = () => {
 }
 
 const styleTask = () => {
-  return src('src/*.css', {sourcemaps: true})
+  return src(['src/styles.css', 'src/styles-override.css'], {sourcemaps: true})
     .pipe(concat('styles.css'))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(dest('dist/', {sourcemaps: true}));

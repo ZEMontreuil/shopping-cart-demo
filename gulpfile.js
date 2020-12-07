@@ -29,7 +29,7 @@ const styleTask = () => {
 const imageTask = () => {
   return src('src/imgs/**/*')
     .pipe(imageMin())
-    .pipe('dist/imgs/')
+    .pipe(dest('dist/imgs/'))
 }
 
 exports.default = parallel(scriptTask, styleTask, 

@@ -3,6 +3,7 @@ const {src, dest, series, parallel} = require('gulp');
 const minify = require('gulp-minify');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
+const imageMin = require('gulp-imagemin');
 
 const scriptTask = () => {
   return src('src/**/*.js', {sourcemaps: true})
@@ -25,4 +26,11 @@ const styleTask = () => {
     .pipe(dest('dist/', {sourcemaps: true}));
 }
 
-exports.default = parallel(scriptTask, styleTask, markupTask);
+const imageTask = () => {
+  return src('src/imgs/**/*')
+    .pipe(imageMin())
+    .pipe('dist/imgs/')
+}
+
+exports.default = parallel(scriptTask, styleTask, 
+  markupTask, imageTask);

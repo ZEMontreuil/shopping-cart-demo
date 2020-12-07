@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ZEMontreuil/shopping-cart-demo#readme",
   "dependencies": {
     "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
     "gulp-minify": "^3.1.0"
   }
 }

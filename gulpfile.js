@@ -2,6 +2,7 @@ const GulpClient = require('gulp');
 const {src, dest, series, parallel} = require('gulp');
 const minify = require('gulp-minify');
 const concat = require('gulp-concat');
+const cleanCSS = require('gulp-clean-css');
 
 const scriptTask = () => {
   return src('src/**/*.js', {sourcemaps: true})
@@ -18,8 +19,10 @@ const markupTask = () => {
 }
 
 const styleTask = () => {
-  return src('src/*.css')
-    .pipe(dest('dist/'));
+  return src('src/*.css', {sourcemaps: true})
+    .pipe(concat('styles.css'))
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(dest('dist/', {sourcemaps: true}));
 }
 
-exports.all = parallel(scriptTask, styleTask, markupTask);
+exports.default = parallel(scriptTask, styleTask, markupTask);

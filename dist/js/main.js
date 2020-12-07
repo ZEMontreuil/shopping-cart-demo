@@ -1,5 +1,3 @@
-// WHAT's THE DEAL WITH CAULIFLOWER
-
 class Game {
   constructor(players, turns, scoreLimit, cpStart) {
     this.players = players;
